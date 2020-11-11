@@ -1,0 +1,205 @@
+
+html{
+	scroll-behavior: smooth;
+	filter: invert(0);
+}
+
+body{
+padding-top: 5rem;
+
+}
+
+
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  min-height: 100px;
+  max-height: 110px;
+  background-color: rgba(53, 120, 200, 0.8);
+  color: white;
+  font-family: "Lato" sans-serif;
+  font-size: 1.5rem;
+  padding: 10px 0px;
+  padding-top: 10px;
+  margin-top: 30px;
+  font-weight: 100;
+  clear: both;
+}
+
+
+p {
+    margin: 10px auto;
+    max-width: 70%;
+    text-align: justify;
+    text-indent: 30px;
+    font-size: 2rem;
+    font-family: 'Lato', sans-serif;
+    color: rgb(21, 27, 100);
+}
+    
+
+
+h1{
+	color: #333;
+  text-shadow: 1px 1px #000;
+
+}
+
+textarea{
+	height:200px
+}
+
+
+.topnav {
+  background: rgb(3,80,160);
+  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  font-size: 4rem;
+  z-index: 2;
+}
+
+.topnav-a {
+  float: right;
+  color: rgb(240,240,240);
+  text-align: center;
+  padding: 20px 26px;
+  transition: 0.4s;
+  text-decoration: none;
+  font-size: 22px;
+}
+
+.topnav-a:hover  {
+
+  background-color: rgba(53, 120, 200, 0.8);
+  color: white;
+}
+
+
+.logo{
+  float: left;
+  padding-bottom: 12px;
+  padding-top: -4px;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  font-size: 3.7rem;
+}
+
+.logo a:link, a:visited{
+    text-decoration: none;
+    color: white;
+}
+
+.wholescreen{
+	height: 100vh;
+
+	padding-left: 2vw;
+}
+
+.botonreserva{
+  height: 20vw;
+  width:  20vw;
+  position: absolute;
+  left: 30vw;
+  top:  27vh;
+  z-index: 1;
+  min-width: 200px;
+  min-height: 200px;
+
+  max-height: 350px;
+  max-width: 350px;
+}
+
+.frontimage {
+    width: 70vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 3%;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+img{
+	max-height: 75vh;
+}
+
+
+.logo {
+	padding-left: 10vh; 
+	padding-top: 4px; 
+	height: 60px
+}
+
+.paddingtopnavbar{
+  padding-top: 8px;
+}
+
+
+input[type=text], select, textarea {
+  width: 100%; 
+  padding: 12px; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px; 
+  resize: vertical 
+}
+
+input[type=submit] {
+    background-color: rgba(53, 120, 200, 0.8);
+    transition: 0.4s;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+    input[type=submit]:hover {
+        background-color: rgb(3,80,160);
+    }
+
+.map{
+	padding-top: 5vh; 
+	padding-left: 3.5vh; 
+	height: 67vh; 
+	width: 	45vw;
+}
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 45vw
+}
+
+.teampicheight{
+	height: 24vh;
+}
+
+.bumpy{
+  position: relative;
+}
+
+.rueda {
+    z-index: 0;
+    border-radius: 50%;
+}
+
+.sombra {
+    z-index: 1;
+    opacity: 0;
+    transition: 0.3s;
+    border-radius: 50%;
+}
+
+    .sombra:hover {
+        opacity: 0.7;
+    }
