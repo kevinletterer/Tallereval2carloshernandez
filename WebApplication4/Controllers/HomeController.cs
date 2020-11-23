@@ -9,8 +9,6 @@ namespace WebApplication4.Controllers
     public class HomeController : Controller
     {
 
-       
-
         public ActionResult Calendario(string nombre, string clave)
 
         {
@@ -31,14 +29,12 @@ namespace WebApplication4.Controllers
 
         public ActionResult Login()
         {
+            ViewBag.Token = "";
             return PartialView();
         }
         public ActionResult Index()
         {
             return PartialView();
-        }
-
-        
-        
+        } 
     }
 }
