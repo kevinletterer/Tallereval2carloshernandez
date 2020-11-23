@@ -22,8 +22,10 @@
      
             <form action="/BDD/Respuestas" method="post">
 
-                <input type="text" id="login" class="fadeIn second" name="user" placeholder="Usuario" autocomplete="off">
-                <input type="text" id="password" class="fadeIn third" name="pass" placeholder="Contraseña" autocomplete="off">
+                <input type="text" id="login" class="fadeIn second" name="user" placeholder="Usuario" autocomplete="off" required
+                       oninvalid="this.setCustomValidity('Ingrese nombre de usuario')" oninput="this.setCustomValidity('')">
+                <input type="text" id="password" class="fadeIn third" name="pass" placeholder="Contraseña" autocomplete="off" required
+                       oninvalid="this.setCustomValidity('Ingrese su contraseña')" oninput="this.setCustomValidity('')">
                 <input type="submit" class="fadeIn fourth" value="Ingresar">
                
             </form>

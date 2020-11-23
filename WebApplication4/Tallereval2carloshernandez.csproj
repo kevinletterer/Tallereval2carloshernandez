@@ -120,6 +120,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdministradorController.cs" />
     <Compile Include="Controllers\BDDController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -304,6 +305,12 @@
     <Content Include="Views\Especialidades\Examenes.cshtml" />
     <Content Include="Views\Especialidades\Imagenologia.cshtml" />
     <Content Include="Views\Especialidades\Dental.cshtml" />
+    <Content Include="Views\BDD\RespuestaPersonal.cshtml" />
+    <Content Include="Views\Administrador\Usuarios.cshtml" />
+    <Content Include="Views\Administrador\Citas.cshtml" />
+    <Content Include="Views\Administrador\Servicios.cshtml" />
+    <Content Include="Views\Administrador\Pacientes.cshtml" />
+    <Content Include="Views\Administrador\Horas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

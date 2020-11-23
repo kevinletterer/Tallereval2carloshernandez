@@ -56,6 +56,22 @@ namespace WebApplication4.Models.Token
 
             return userid;
         }
+
+        public int getUserType(string user, string pass)
+        {
+            int usertype = 0;
+            connection.Open();
+            string query = "select TIPO from USUARIOS where USUARIO = '" + user + "' AND CLAVE = '" + pass + "'";
+            command = new SqlCommand(query, connection);
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                usertype = dataReader.GetInt32(0);
+            }
+            connection.Close();
+
+            return usertype;
+        }
         public bool checkUser(String user, String pass)
         {
             connection.Open();

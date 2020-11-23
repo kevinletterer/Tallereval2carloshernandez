@@ -21,9 +21,17 @@ namespace WebApplication4.Controllers
                string token = Token.createToken(user, pass);
 
                ViewBag.Token = token;
-               ViewBag.Mensaje = user+pass+token;
 
-               return View();
+                int type = Token.getUserType(user, pass);
+                if (type == 1)
+                {
+                    return View("/Views/Administrador/Usuarios.cshtml");
+                }
+                if (type == 2)
+                {
+                    return View("/Views/BDD/RespuestaPersonal.cshtml");
+                }
+               
             }
 
             return View("/Views/Home/Login.cshtml");
@@ -46,7 +54,6 @@ namespace WebApplication4.Controllers
             command.Parameters.AddWithValue("@Oficina", Oficina);
             command.Parameters.AddWithValue("@Especialidad", Especialidad);
             command.Parameters.AddWithValue("@Tipo", Tipo);
-            // command.Parameters.AddWithValue("@clave", pass);
             ViewBag.mensaje = "";
 
 
@@ -83,7 +90,6 @@ namespace WebApplication4.Controllers
             ;
             command.Parameters.AddWithValue("@Rut", Rut);
 
-            // command.Parameters.AddWithValue("@clave", pass);
             ViewBag.mensaje = "";
 
 
@@ -126,7 +132,6 @@ namespace WebApplication4.Controllers
             command.Parameters.AddWithValue("@Especialidad", Especialidad);
             command.Parameters.AddWithValue("@Tipo", Tipo);
 
-            // command.Parameters.AddWithValue("@clave", pass);
             ViewBag.mensaje = "";
 
             try
@@ -174,7 +179,6 @@ namespace WebApplication4.Controllers
             command.Parameters.AddWithValue("@Sexo", Sexo);
             command.Parameters.AddWithValue("@Direccion", Direccion);
             command.Parameters.AddWithValue("@Prevision", Prevision);
-            // command.Parameters.AddWithValue("@clave", pass);
             ViewBag.mensaje = "";
 
 
@@ -213,7 +217,6 @@ namespace WebApplication4.Controllers
             ;
             command.Parameters.AddWithValue("@Rut", Rut);
 
-            // command.Parameters.AddWithValue("@clave", pass);
             ViewBag.mensaje = "";
 
 
@@ -257,7 +260,6 @@ namespace WebApplication4.Controllers
             command.Parameters.AddWithValue("@Sexo", Sexo);
             command.Parameters.AddWithValue("@Direccion", Direccion);
             command.Parameters.AddWithValue("@Prevision", Prevision);
-            // command.Parameters.AddWithValue("@clave", pass);
             ViewBag.mensaje = "";
 
             int row_count = command2.ExecuteNonQuery();
@@ -293,7 +295,6 @@ namespace WebApplication4.Controllers
             command.Parameters.AddWithValue("@Nombre", Servicio);
             command.Parameters.AddWithValue("@Precio", Precio);
 
-            // command.Parameters.AddWithValue("@clave", pass);
             ViewBag.mensaje = "";
 
 
@@ -331,7 +332,6 @@ namespace WebApplication4.Controllers
             ;
             command.Parameters.AddWithValue("@Nombre", Servicio);
 
-            // command.Parameters.AddWithValue("@clave", pass);
             ViewBag.mensaje = "";
 
 
@@ -371,7 +371,6 @@ namespace WebApplication4.Controllers
             command.Parameters.AddWithValue("@Nombre", Servicio);
             command.Parameters.AddWithValue("@Precio", Precio);
 
-            // command.Parameters.AddWithValue("@clave", pass);
             ViewBag.mensaje = "";
 
             int row_count = command2.ExecuteNonQuery();
