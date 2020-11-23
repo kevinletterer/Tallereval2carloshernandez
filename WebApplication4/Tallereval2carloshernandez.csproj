@@ -298,6 +298,9 @@
     <Content Include="Views\Home\Calendario.cshtml" />
     <Content Include="Views\Home\Reservado.cshtml" />
     <Content Include="Views\BDD\Respuestas.cshtml" />
+    <Content Include="Views\Especialidades\Examenes.cshtml" />
+    <Content Include="Views\Especialidades\Imagenologia.cshtml" />
+    <Content Include="Views\Especialidades\Dental.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
