@@ -6,11 +6,7 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-        function alerta() {
-            alert("Bienvenido al Sistema. ");
-        }
-    </script>
+    
 
 </head>
 
@@ -21,16 +17,14 @@
         <div id="formContent">       
             <div class="fadeIn first">
                 <img src="/Content/img/logolargo2.jpg"  id="icon" alt="User Icon" />
-
-
             </div>
 
      
             <form action="/BDD/Respuestas" method="post">
 
-                <input type="text" id="login" class="fadeIn second" name="user" placeholder="Usuario">
-                <input type="text" id="password" class="fadeIn third" name="pass" placeholder="Contraseña">
-                <input type="submit" class="fadeIn fourth" value="Ingresar" onclick="alerta()">
+                <input type="text" id="login" class="fadeIn second" name="user" placeholder="Usuario" autocomplete="off">
+                <input type="text" id="password" class="fadeIn third" name="pass" placeholder="Contraseña" autocomplete="off">
+                <input type="submit" class="fadeIn fourth" value="Ingresar">
                
             </form>
 
