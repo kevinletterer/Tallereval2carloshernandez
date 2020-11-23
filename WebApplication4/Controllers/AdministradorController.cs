@@ -29,11 +29,7 @@ namespace WebApplication4.Controllers
         {
             return View("/Views/Administrador/Servicios.cshtml");
         }
-        public ActionResult Logout()
-        {
-            ViewBag.Token = "";
-            return PartialView("/Views/Home/Index.cshtml");
-        }
+        
     }
 
 }

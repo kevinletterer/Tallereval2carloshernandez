@@ -17,7 +17,7 @@
             <a href="Index"><img src="/Content/img/logo4.png" class="logo pumpy"> línica Cronos</a>
 
         </div>
-        <a class="active topnav-a bumpy" href="/Administrador/Logout">Cerrar Sesión</a>
+        <a class="active topnav-a bumpy" href="/Home/Logout">Cerrar Sesión</a>
         <a class="active topnav-a bumpy" href="/Administrador/Citas">Citas</a>
         <a class="active topnav-a bumpy" href="/Administrador/Horas">Horas</a>
         <a class="active topnav-a bumpy" href="/Administrador/Servicios">Servicios</a>
@@ -26,7 +26,88 @@
     </div>
 
 
+    <form method="post" action="/BDD/ingresarPaciente" style="width:20%; margin-left:100px; margin-top:100px;">
+        <label for="text"><h1> Registro de Pacientes </h1></label>
+        <br><br>
+        <div class="form-group">
+            <label for="text">Rut  Paciente</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="Rut">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Nombre  Paciente</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Nombre">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Telefono Paciente  </label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Telefono">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Email Paciente</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Sexo Paciente</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Sexo">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Direccion Paciente</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Direccion">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Prevision Paciente</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Prevision">
+        </div>
 
+        <button type="submit" name="Submit" class="btn btn-primary" value="Insertar">Ingresar</button>
+
+
+    </form>
+
+    <form method="post" action="/BDD/eliminarPaciente" style="width:20%; margin-left:100px; margin-top:100px;">
+        <label for="text"><h3> Eliminar Pacientes </h3></label>
+        <div class="form-group">
+            <label for="text">Ingrese Rut a eliminar</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="Rut">
+        </div>
+
+        <button type="submit" name="Submit" class="btn btn-primary" value="Eliminar">Eliminar</button>
+
+    </form>
+
+    <form method="post" action="/BDD/editarPaciente" style="width:20%; margin-left:100px; margin-top:100px;">
+        <label for="text"><h3> Editar Pacientes </h3></label>
+        <br><br>
+        <div class="form-group">
+            <label for="text">Rut  Paciente</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="Rut">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Nombre  Paciente</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Nombre">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Telefono Paciente  </label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Telefono">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Email Paciente</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Email">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Sexo Paciente</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Sexo">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Direccion Paciente</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Direccion">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Prevision Paciente</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Prevision">
+        </div>
+
+        <button type="submit" name="Submit" class="btn btn-primary" value="Insertar">Editar</button>
+    </form>
 
 
 </body>

@@ -51,5 +51,11 @@ namespace WebApplication4.Controllers
         {
             return PartialView("/Views/Especialidades/Dental.cshtml");
         }
+
+        public ActionResult Logout()
+        {
+            ViewBag.Token = "";
+            return PartialView("/Views/Home/Index.cshtml");
+        }
     }
 }

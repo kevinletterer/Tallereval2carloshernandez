@@ -17,7 +17,7 @@
             <a href="Index"><img src="/Content/img/logo4.png" class="logo pumpy"> línica Cronos</a>
 
         </div>
-        <a class="active topnav-a bumpy" href="/Administrador/Logout">Cerrar Sesión</a>
+        <a class="active topnav-a bumpy" href="/Home/Logout">Cerrar Sesión</a>
         <a class="active topnav-a bumpy" href="/Administrador/Citas">Citas</a>
         <a class="active topnav-a bumpy" href="/Administrador/Horas">Horas</a>
         <a class="active topnav-a bumpy" href="/Administrador/Servicios">Servicios</a>
@@ -27,7 +27,53 @@
 
 
 
+    <form method="post" action="/BDD/ingresarServicio" style="width:20%; margin-left:100px; margin-top:100px;">
+        <label for="text"><h1> Registro de Servicios </h1></label>
+        <br><br>
+        <div class="form-group">
+            <label for="text">Nombre de Servicio</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="Servicio">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Precio Servicio</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Precio">
+        </div>
 
+
+        <button  type="submit" name="Submit" class="btn btn-primary" value="Insertar">Ingresar</button>
+
+
+    </form>
+
+    <form method="post" action="/BDD/eliminarServicio" style="width:20%; margin-left:100px; margin-top:100px;">
+        <label for="text"><h3> Eliminar Servicios </h3></label>
+        <div class="form-group">
+            <label for="text">Ingrese Nombre de Servicio a Eliminar</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="Servicio">
+        </div>
+
+        <button  type="submit" name="Submit" class="btn btn-primary" value="Eliminar">Eliminar</button>
+
+    </form>
+
+
+    <form method="post" action="/BDD/editarServicio" style="width:20%; margin-left:100px; margin-top:100px;">
+        <label for="text"><h3> Editar Servicios </h3></label>
+        <br><br>
+        <div class="form-group">
+            <label for="text">Nombre Servicio</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="Servicio">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Precio</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Precio">
+
+
+            <button  type="submit" name="Submit" class="btn btn-primary" value="Insertar">Editar</button>
+        </div>
+
+
+    </form>
 
 </body>
 
