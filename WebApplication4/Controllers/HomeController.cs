@@ -35,6 +35,21 @@ namespace WebApplication4.Controllers
         public ActionResult Index()
         {
             return PartialView();
-        } 
+        }
+
+        public ActionResult Examenes()
+        {
+            return PartialView("/Views/Especialidades/Examenes.cshtml");
+        }
+
+        public ActionResult Imagenologia()
+        {
+            return PartialView("/Views/Especialidades/Imagenologia.cshtml");
+        }
+
+        public ActionResult Dental()
+        {
+            return PartialView("/Views/Especialidades/Dental.cshtml");
+        }
     }
 }

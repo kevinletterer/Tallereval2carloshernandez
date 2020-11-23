@@ -137,6 +137,9 @@
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.min.css" />
     <Content Include="Content\img\6f3a9775-b788-4bd3-8d89-8db0646f9bd2.jpg" />
+    <Content Include="Content\img\bajaexamenes.jpg" />
+    <Content Include="Content\img\dental.jpg" />
+    <Content Include="Content\img\imagenologia.png" />
     <Content Include="Content\img\logo2.jpg" />
     <Content Include="Content\img\logo3.jpg" />
     <Content Include="Content\img\logo3.png" />
