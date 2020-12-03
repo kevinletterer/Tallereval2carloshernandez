@@ -15,12 +15,12 @@
 <body>
 
     <div class="wrapper fadeInDown">
-        <div id="formContent">       
+        <div id="formContent">
             <div class="fadeIn first">
-                <img src="/Content/img/logolargo2.jpg"  id="icon" alt="User Icon" />
+                <img src="/Content/img/logolargo2.jpg" id="icon" alt="User Icon" />
             </div>
 
-     
+
             <form action="/BDD/Respuestas" method="post">
 
                 <input type="text" id="login" class="fadeIn second" name="user" placeholder="Usuario" autocomplete="off" required
@@ -28,9 +28,13 @@
                 <input type="text" id="password" class="fadeIn third" name="pass" placeholder="Contraseña" autocomplete="off" required
                        oninvalid="this.setCustomValidity('Ingrese su contraseña')" oninput="this.setCustomValidity('')">
                 <input type="submit" class="fadeIn fourth" value="Ingresar">
-               
+
+
             </form>
 
+            <div class="alert alert-danger" role="alert">
+                <h3> @ViewBag.mensaje </h3>
+            </div>
 
             <div id="formFooter">
                 <a class="underlineHover" href="#">¿Olvidó su Contraseña?</a>

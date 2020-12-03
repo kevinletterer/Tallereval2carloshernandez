@@ -9,7 +9,7 @@ namespace WebApplication4.Models.Token
     public class Token
 
     {
-        private static String conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BDDCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private static String conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBBCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         private SqlConnection connection = new SqlConnection(conex);
         private SqlCommand command;
         private SqlDataReader dataReader;

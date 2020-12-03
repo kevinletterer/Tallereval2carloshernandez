@@ -12,17 +12,25 @@ namespace WebApplication4.Controllers
     {
         static Token Token = new Token();
         // GET: BDD
-        public static string conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BDDCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        public static string conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBBCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+
+
+
+
+
+
         public ActionResult Respuestas(string user, string pass)
         {
-           
-            
+            ViewBag.mensaje = "";
+
             if (Token.checkUser(user, pass))
             {
                string token = Token.createToken(user, pass);
                 Session["Token"] = token;
 
                 int type = Token.getUserType(user, pass);
+
+              
                 if (type == 1)
                 {
                     return View("/Views/Administrador/Usuarios.cshtml");
@@ -31,11 +39,30 @@ namespace WebApplication4.Controllers
                 {
                     return View("/Views/BDD/RespuestaPersonal.cshtml");
                 }
-               
+
+
+            }
+            else
+            {
+
+                    ViewBag.mensaje = "Nombre de usuario y/o clave incorrectos.";             
             }
 
             return View("/Views/Home/Login.cshtml");
         }
+
+        public class HomeController : Controller
+        {
+            [HttpGet]
+            public ActionResult Index()
+            {
+                return View();
+            }
+
+      
+        }
+
+
 
         public ActionResult ingresarUsuario(string Usuario, string Clave, string Rut, string Telefono, string Oficina, string Especialidad, int Tipo)
         {
