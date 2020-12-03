@@ -10,17 +10,17 @@ namespace WebApplication4.Controllers
 {
     public class BDDController : Controller
     {
+        static Token Token = new Token();
         // GET: BDD
+        public static string conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BDDCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         public ActionResult Respuestas(string user, string pass)
         {
-            
-            Token Token = new Token();
+           
             
             if (Token.checkUser(user, pass))
             {
                string token = Token.createToken(user, pass);
-
-               ViewBag.Token = token;
+                Session["Token"] = token;
 
                 int type = Token.getUserType(user, pass);
                 if (type == 1)
@@ -39,8 +39,13 @@ namespace WebApplication4.Controllers
 
         public ActionResult ingresarUsuario(string Usuario, string Clave, string Rut, string Telefono, string Oficina, string Especialidad, int Tipo)
         {
+            string token = Session["Token"].ToString();
+            if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                return PartialView("/Views/Home/Index.cshtml");
+            }
 
-            string conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBBCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             var connection = new SqlConnection(conex);
             connection.Open();
             string query = "guardarUsuario";
@@ -73,14 +78,18 @@ namespace WebApplication4.Controllers
 
 
 
-            return View("/Views/Home/Login.cshtml");
+            return View("/Views/Administrador/Usuarios.cshtml");
         }
 
         public ActionResult eliminarUsuario(string Rut)
         {
+            string token = Session["Token"].ToString();
+                if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                return PartialView("/Views/Home/Index.cshtml");
+            }
 
-
-            string conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBBCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             var connection = new SqlConnection(conex);
             connection.Open();
             string query = "eliminarUsuario";
@@ -108,13 +117,18 @@ namespace WebApplication4.Controllers
             connection.Close();
 
 
-            return View("/Views/Home/Login.cshtml");
+            return View("/Views/Administrador/Usuarios.cshtml");
         }
 
         public ActionResult editarUsuario(string Usuario, string Clave, string Rut, string Telefono, string Oficina, string Especialidad, int Tipo)
         {
+            string token = Session["Token"].ToString();
+            if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                return PartialView("/Views/Home/Index.cshtml");
+            }
 
-            string conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBBCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             var connection = new SqlConnection(conex);
             connection.Open();
             string query = "editarUsuario";
@@ -158,14 +172,13 @@ namespace WebApplication4.Controllers
 
 
 
-            return View("/Views/Home/Login.cshtml");
+            return View("/Views/Administrador/Usuarios.cshtml");
         }
 
         public ActionResult ingresarPaciente(string Rut, string Nombre, string Telefono, string Email, string Sexo, string Direccion, string Prevision)
         {
 
 
-            string conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBBCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             var connection = new SqlConnection(conex);
             connection.Open();
             string query = "guardarPaciente";
@@ -199,7 +212,7 @@ namespace WebApplication4.Controllers
 
 
 
-            return View("/Views/Home/Login.cshtml");
+            return View("/Views/Administrador/Pacientes.cshtml");
         }
 
 
@@ -207,7 +220,6 @@ namespace WebApplication4.Controllers
         {
 
 
-            string conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBBCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             var connection = new SqlConnection(conex);
             connection.Open();
             string query = "eliminarPaciente";
@@ -235,14 +247,13 @@ namespace WebApplication4.Controllers
             connection.Close();
 
 
-            return View("/Views/Home/Login.cshtml");
+            return View("/Views/Administrador/Pacientes.cshtml");
         }
 
 
         public ActionResult editarPaciente(string Rut, string Nombre, string Telefono, string Email, string Sexo, string Direccion, string Prevision)
         {
 
-            string conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBBCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             var connection = new SqlConnection(conex);
             connection.Open();
             string query = "editarPaciente";
@@ -278,14 +289,13 @@ namespace WebApplication4.Controllers
 
 
 
-            return View("/Views/Home/Login.cshtml");
+            return View("/Views/Administrador/Pacientes.cshtml");
         }
 
         public ActionResult ingresarServicio(string Servicio, int Precio)
         {
 
 
-            string conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBBCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             var connection = new SqlConnection(conex);
             connection.Open();
             string query = "guardarServicio";
@@ -315,14 +325,13 @@ namespace WebApplication4.Controllers
 
 
 
-            return View("/Views/Home/Login.cshtml");
+            return View("/Views/Administrador/Servivios.cshtml");
         }
 
         public ActionResult eliminarServicio(string Servicio)
         {
 
 
-            string conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBBCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             var connection = new SqlConnection(conex);
             connection.Open();
             string query = "eliminarServicio";
@@ -350,14 +359,13 @@ namespace WebApplication4.Controllers
             connection.Close();
 
 
-            return View("/Views/Home/Login.cshtml");
+            return View("/Views/Administrador/Servivios.cshtml");
         }
 
 
         public ActionResult editarServicio(string Servicio, int Precio)
         {
 
-            string conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBBCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             var connection = new SqlConnection(conex);
             connection.Open();
             string query = "editarServicio";
@@ -389,7 +397,7 @@ namespace WebApplication4.Controllers
 
 
 
-            return View("/Views/Home/Login.cshtml");
+            return View("/Views/Administrador/Servivios.cshtml");
         }
     }
 }

@@ -29,7 +29,7 @@ namespace WebApplication4.Controllers
 
         public ActionResult Login()
         {
-            ViewBag.Token = "";
+            Session["Token"] = "";
             return PartialView();
         }
         public ActionResult Index()
@@ -54,7 +54,7 @@ namespace WebApplication4.Controllers
 
         public ActionResult Logout()
         {
-            ViewBag.Token = "";
+            Session["Token"] = "";
             return PartialView("/Views/Home/Index.cshtml");
         }
     }

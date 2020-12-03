@@ -1,30 +1,27 @@
-
-html{
-	scroll-behavior: smooth;
-	filter: invert(0);
+html {
+    filter: invert(0);
 }
 
-body{
-padding-top: 5rem;
-
+body {
+    padding-top: 5rem;
 }
 
 
 footer {
-  position: relative;
-  bottom: 0;
-  width: 100%;
-  min-height: 100px;
-  max-height: 110px;
-  background-color: rgba(53, 120, 200, 0.8);
-  color: white;
-  font-family: "Lato" sans-serif;
-  font-size: 1.5rem;
-  padding: 10px 0px;
-  padding-top: 10px;
-  margin-top: 30px;
-  font-weight: 100;
-  clear: both;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    min-height: 100px;
+    max-height: 110px;
+    background-color: rgba(53, 120, 200, 0.8);
+    color: white;
+    font-family: "Lato" sans-serif;
+    font-size: 1.5rem;
+    padding: 10px 0px;
+    padding-top: 10px;
+    margin-top: 30px;
+    font-weight: 100;
+    clear: both;
 }
 
 
@@ -39,7 +36,7 @@ p {
 }
 
 
-    
+
 .p2 {
     margin: 20px auto;
     max-width: 70%;
@@ -50,82 +47,79 @@ p {
     color: rgb(21, 27, 100);
 }
 
-h1{
+h1 {
     text-align: center;
-	color: darkblue;
+    color: darkblue;
     text-shadow: 1px 1px #000;
 }
 
-h2{
-    text-size-adjust:auto;
+h2 {
+    text-size-adjust: auto;
     text-align: center;
-	color: darkblue;
+    color: darkblue;
     text-shadow: 1px 1px #000;
 }
 
-textarea{
-	height:200px
+textarea {
+    height: 200px
 }
 
 
 .topnav {
-  background: rgb(3,80,160);
-  overflow: hidden;
-  font-family: 'Lato', sans-serif;
-  color: white;
-  font-size: 4rem;
-  z-index: 2;
+    background: rgb(3,80,160);
+    overflow: hidden;
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-size: 4rem;
+    z-index: 2;
 }
 
 .topnav-a {
-  float: right;
-  color: rgb(240,240,240);
-  text-align: center;
-  padding: 20px 26px;
-  transition: 0.4s;
-  text-decoration: none;
-  font-size: 22px;
-}
-
-.topnav-a:hover  {
-
-  background-color: rgba(53, 120, 200, 0.8);
-  color: white;
-}
-
-
-.logo{
-  float: left;
-  padding-bottom: 12px;
-  padding-top: -4px;
-  font-family: 'Lato', sans-serif;
-  color: white;
-  font-size: 3.7rem;
-}
-
-.logo a:link, a:visited{
+    float: right;
+    color: rgb(240,240,240);
+    text-align: center;
+    padding: 20px 26px;
+    transition: 0.4s;
     text-decoration: none;
+    font-size: 22px;
+}
+
+    .topnav-a:hover {
+        background-color: rgba(53, 120, 200, 0.8);
+        color: white;
+    }
+
+
+.logo {
+    float: left;
+    padding-bottom: 12px;
+    padding-top: -4px;
+    font-family: 'Lato', sans-serif;
     color: white;
+    font-size: 3.7rem;
 }
 
-.wholescreen{
-	height: 100vh;
+    .logo a:link, a:visited {
+        text-decoration: none;
+        color: white;
+    }
 
-	padding-left: 2vw;
+.wholescreen {
+    height: 100vh;
+    padding-left: 2vw;
 }
 
-.botonreserva{
-  height: 20vw;
-  width:  20vw;
-  position: absolute;
-  left: 30vw;
-  top:  27vh;
-  z-index: 1;
-  min-width: 200px;
-  min-height: 200px;
-
-  max-height: 350px;
-  max-width: 350px;
+.botonreserva {
+    height: 20vw;
+    width: 20vw;
+    position: absolute;
+    left: 30vw;
+    top: 27vh;
+    z-index: 1;
+    min-width: 200px;
+    min-height: 200px;
+    max-height: 350px;
+    max-width: 350px;
 }
 
 .frontimage {
@@ -137,37 +131,37 @@ textarea{
 }
 
 .sticky {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
-img{
-	max-height: 75vh;
+img {
+    max-height: 75vh;
 }
 
 
 .logo {
-	padding-left: 10vh; 
-	padding-top: 4px; 
-	height: 60px
+    padding-left: 10vh;
+    padding-top: 4px;
+    height: 60px
 }
 
-.paddingtopnavbar{
-  padding-top: 8px;
+.paddingtopnavbar {
+    padding-top: 8px;
 }
 
 
 input[type=text], select, textarea {
-  width: 100%; 
-  padding: 12px; 
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  margin-top: 6px;
-  margin-bottom: 16px; 
-  resize: vertical 
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical
 }
 
 input[type=submit] {
@@ -184,25 +178,26 @@ input[type=submit] {
         background-color: rgb(3,80,160);
     }
 
-.map{
-	padding-top: 5vh; 
-	padding-left: 3.5vh; 
-	height: 67vh; 
-	width: 	45vw;
+.map {
+    padding-top: 5vh;
+    padding-left: 3.5vh;
+    height: 67vh;
+    width: 45vw;
 }
+
 .container {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-  width: 45vw
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+    width: 45vw
 }
 
-.teampicheight{
-	height: 24vh;
+.teampicheight {
+    height: 24vh;
 }
 
-.bumpy{
-  position: relative;
+.bumpy {
+    position: relative;
 }
 
 .rueda {
@@ -221,52 +216,52 @@ input[type=submit] {
         opacity: 0.7;
     }
 
-.menu > li{
-	position: relative;
-	display: inline-block;
+.menu > li {
+    position: relative;
+    display: inline-block;
 }
 
-.menu > li > a{
-	display: block;
-	padding: 15px 20px;
-	color: #353535;
-	font-family: 'Open sans';
-	text-decoration: none;
+    .menu > li > a {
+        display: block;
+        padding: 15px 20px;
+        color: #353535;
+        font-family: 'Open sans';
+        text-decoration: none;
+    }
+
+.menu li a:hover {
+    color: #CE7D35;
+    transition: all .3s;
 }
 
-.menu li a:hover{
-	color: #CE7D35;
-	transition: all .3s;
+.submenu {
+    position: absolute;
+    background: #333333;
+    width: 120%;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 1.5s;
 }
 
-.submenu{
-	position: absolute;
-	background: #333333;
-	width: 120%;
-	visibility: hidden;
-	opacity: 0;
-	transition: opacity 1.5s;
+    .submenu li a {
+        display: block;
+        padding: 15px;
+        color: #fff;
+        font-family: 'Open sans';
+        text-decoration: none;
+    }
+
+.menu li:hover .submenu {
+    visibility: visible;
+    opacity: 1;
 }
 
-.submenu li a{
-	display: block;
-	padding: 15px;
-	color: #fff;
-	font-family: 'Open sans';
-	text-decoration: none;
+.navegacion {
+    width: 1000px;
+    margin: 30px auto;
+    background: #fff;
 }
 
-.menu li:hover .submenu{
-	visibility: visible;
-	opacity: 1;
-}
-
-.navegacion{
-	width: 1000px;
-	margin: 30px auto;
-	background: #fff;
-}
-
-.navegacion ul{
-	list-style: none;
-}
+    .navegacion ul {
+        list-style: none;
+    }

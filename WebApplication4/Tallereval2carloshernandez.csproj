@@ -285,6 +285,7 @@
     <Content Include="Content\img\logo.jpg" />
     <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\validaRut.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
