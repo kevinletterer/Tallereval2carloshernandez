@@ -5,14 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.SqlClient;
 using WebApplication4.Models.Token;
-
+using WebApplication4.Models.Conexion;
 namespace WebApplication4.Controllers
 {
     public class AdministradorController : Controller
     {
+        static string conex = Conexion.conex;
         static Token Token = new Token();
-        public static string conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog = BDDCRONOS; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
         // GET: Administrador
         public ActionResult Usuarios()
         {
