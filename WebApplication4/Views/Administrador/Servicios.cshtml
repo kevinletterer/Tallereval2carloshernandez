@@ -25,34 +25,38 @@
         <a class="active topnav-a bumpy" href="/Administrador/Usuarios">Usuarios</a>
     </div>
 
+    @Html.Raw(ViewBag.Table)
+
+<form method="post" action="/BDD/ingresarServicio" style="width:20%; margin-left:100px; margin-top:100px;">
+    <label for="text"><h1> Registro de Servicios </h1></label>
+    <br><br>
+    <div class="form-group">
+        <label for="text">Nombre de Servicio</label>
+        <input required="" autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="Nombre">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Precio Servicio</label>
+        <input pattern="[0-9]+" required="" autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Precio">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Especialidad</label>
+        <input required="" autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Especialidad">
+    </div>
 
 
-    <form method="post" action="/BDD/ingresarServicio" style="width:20%; margin-left:100px; margin-top:100px;">
-        <label for="text"><h1> Registro de Servicios </h1></label>
-        <br><br>
-        <div class="form-group">
-            <label for="text">Nombre de Servicio</label>
-             <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="Servicio">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Precio Servicio</label>
-             <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Precio">
-        </div>
+    <button type="submit" name="Submit" class="btn btn-primary" value="Insertar">Ingresar</button>
 
 
-        <button  type="submit" name="Submit" class="btn btn-primary" value="Insertar">Ingresar</button>
-
-
-    </form>
+</form>
 
     <form method="post" action="/BDD/eliminarServicio" style="width:20%; margin-left:100px; margin-top:100px;">
         <label for="text"><h3> Eliminar Servicios </h3></label>
         <div class="form-group">
-            <label for="text">Ingrese Nombre de Servicio a Eliminar</label>
-             <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="Servicio">
+            <label for="text">Ingrese Id del Servicio a Eliminar</label>
+            <input pattern="[0-9]+" required="" autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="Id">
         </div>
 
-        <button  type="submit" name="Submit" class="btn btn-primary" value="Eliminar">Eliminar</button>
+        <button type="submit" name="Submit" class="btn btn-primary" value="Eliminar">Eliminar</button>
 
     </form>
 
@@ -61,16 +65,22 @@
         <label for="text"><h3> Editar Servicios </h3></label>
         <br><br>
         <div class="form-group">
+            <label for="text">Id Servicio</label>
+            <input pattern="[0-9]+" required="" autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="Id">
+        </div>
+        <div class="form-group">
             <label for="text">Nombre Servicio</label>
-             <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="Servicio">
+            <input required="" autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="Nombre">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Precio</label>
-             <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Precio">
-
-
-            <button  type="submit" name="Submit" class="btn btn-primary" value="Insertar">Editar</button>
+            <input required="" pattern="[0-9]+" autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Precio">
         </div>
+        <div class="form-group">
+            <label for="text">Especialidad</label>
+            <input required="" autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="Especialidad">
+        </div>
+        <button type="submit" name="Submit" class="btn btn-primary" value="Insertar">Editar</button>
 
 
     </form>

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Data.SqlClient;
 using WebApplication4.Models.Token;
 using WebApplication4.Models.Conexion;
+using WebApplication4.Models.Tablas;
 
 namespace WebApplication4.Controllers
 {
@@ -15,7 +16,12 @@ namespace WebApplication4.Controllers
         static Token Token = new Token();
         // GET: BDD
         public static string conex = Conexion.conex;
-
+        static Usuarios usuarios = new Usuarios();
+        static Pacientes pacientes = new Pacientes();
+        static Horas horas = new Horas();
+        static Servicios servicios = new Servicios();
+        static Citas citas = new Citas();
+   
 
 
 
@@ -33,48 +39,8 @@ namespace WebApplication4.Controllers
               
                 if (type == 1)
                 {
-                    var connection = new SqlConnection(conex);
-                    connection.Open();
-                    string query = "Select * from USUARIOS";
-
-
-                    SqlCommand command = new SqlCommand(query, connection);
-                    SqlDataReader dataReader;
-                    dataReader = command.ExecuteReader();
-                    string Tabla = "";
-                    Tabla += "<table border = 2 style = 'width= 60vw'>" +
-                                "<th>ID</th>" +
-                                "<th>USUARIO</th>" +
-                                "<th>CLAVE</th>" +
-                                "<th>RUT</th>" +
-                                "<th>TELEFONO</th>" +
-                                "<th>OFICINA</th>" +
-                                "<th>ESPECIALIDAD</th>" +
-                                "<th>NIVEL</th>";
-
-                    while (dataReader.HasRows)
-                    {
-                        while (dataReader.Read())
-                        {
-                            Tabla += "<tr>";
-                            Tabla += "<td>" + dataReader.GetInt32(0) + "</td>";
-                            Tabla += "<td>" + dataReader.GetString(1) + "</td>";
-                            Tabla += "<td>" + dataReader.GetString(2) + "</td>";
-                            Tabla += "<td>" + dataReader.GetString(3) + "</td>";
-                            Tabla += "<td>" + dataReader.GetString(4) + "</td>";
-                            Tabla += "<td>" + dataReader.GetString(5) + "</td>";
-                            Tabla += "<td>" + dataReader.GetString(6) + "</td>";
-                            Tabla += "<td>" + dataReader.GetInt32(7) + "</td>";
-                            Tabla += "</tr>";
-
-                        }
-
-                        dataReader.NextResult();
-                    }
-                    Tabla += "</table>";
-
-                    ViewBag.Table = Tabla;
-                    connection.Close();
+                    
+                    ViewBag.Table = usuarios.mostrartabla();
 
                     return View("/Views/Administrador/Usuarios.cshtml");
                 }
@@ -101,19 +67,18 @@ namespace WebApplication4.Controllers
             {
                 return View();
             }
-
-      
         }
 
 
 
-        public ActionResult ingresarUsuario(string Usuario, string Clave, string Rut, string Telefono, string Oficina, string Especialidad, int Tipo)
+        public ActionResult ingresarUsuario(string Nombre, string Usuario, string Clave, string Rut, string Telefono, string Oficina, string Especialidad, int Tipo)
         {
             string token = Session["Token"].ToString();
             if (!Token.checkTokenValid(token))
             {
                 Session["Token"] = "";
-                return PartialView("/Views/Home/Index.cshtml");
+                ViewBag.mensaje = "Tiempo de sesión expirado";
+                return PartialView("/Views/Home/Login.cshtml");
             }
 
             var connection = new SqlConnection(conex);
@@ -122,6 +87,7 @@ namespace WebApplication4.Controllers
             SqlCommand command = new SqlCommand(query, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
 
+            command.Parameters.AddWithValue("@Nombre", Nombre);
             command.Parameters.AddWithValue("@Usuario", Usuario);
             command.Parameters.AddWithValue("@Clave", Clave);
             command.Parameters.AddWithValue("@Rut", Rut);
@@ -146,7 +112,7 @@ namespace WebApplication4.Controllers
             }
             connection.Close();
 
-
+            ViewBag.Table = usuarios.mostrartabla();
 
             return View("/Views/Administrador/Usuarios.cshtml");
         }
@@ -157,7 +123,7 @@ namespace WebApplication4.Controllers
                 if (!Token.checkTokenValid(token))
             {
                 Session["Token"] = "";
-                return PartialView("/Views/Home/Index.cshtml");
+                return PartialView("/Views/Home/Login.cshtml");
             }
 
             var connection = new SqlConnection(conex);
@@ -186,17 +152,18 @@ namespace WebApplication4.Controllers
             }
             connection.Close();
 
+            ViewBag.Table = usuarios.mostrartabla();
 
             return View("/Views/Administrador/Usuarios.cshtml");
         }
 
-        public ActionResult editarUsuario(string Usuario, string Clave, string Rut, string Telefono, string Oficina, string Especialidad, int Tipo)
+        public ActionResult editarUsuario(string Nombre, string Usuario, string Clave, string Rut, string Telefono, string Oficina, string Especialidad, int Tipo)
         {
             string token = Session["Token"].ToString();
             if (!Token.checkTokenValid(token))
             {
                 Session["Token"] = "";
-                return PartialView("/Views/Home/Index.cshtml");
+                return PartialView("/Views/Home/Login.cshtml");
             }
 
             var connection = new SqlConnection(conex);
@@ -208,6 +175,7 @@ namespace WebApplication4.Controllers
             SqlCommand command2 = new SqlCommand(query2, connection);
 
             command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@Nombre", Nombre);
             command.Parameters.AddWithValue("@Usuario", Usuario);
             command.Parameters.AddWithValue("@Clave", Clave);
             command.Parameters.AddWithValue("@Rut", Rut);
@@ -240,7 +208,7 @@ namespace WebApplication4.Controllers
 
             connection.Close();
 
-
+            ViewBag.Table = usuarios.mostrartabla();
 
             return View("/Views/Administrador/Usuarios.cshtml");
         }
@@ -280,7 +248,7 @@ namespace WebApplication4.Controllers
             connection.Close();
 
 
-
+            ViewBag.Table = pacientes.mostrartabla();
 
             return View("/Views/Administrador/Pacientes.cshtml");
         }
@@ -316,7 +284,7 @@ namespace WebApplication4.Controllers
             }
             connection.Close();
 
-
+            ViewBag.Table = pacientes.mostrartabla();
             return View("/Views/Administrador/Pacientes.cshtml");
         }
 
@@ -358,11 +326,11 @@ namespace WebApplication4.Controllers
             connection.Close();
 
 
-
+            ViewBag.Table = pacientes.mostrartabla();
             return View("/Views/Administrador/Pacientes.cshtml");
         }
 
-        public ActionResult ingresarServicio(string Servicio, int Precio)
+        public ActionResult ingresarServicio(string Nombre, int Precio, string Especialidad)
         {
 
 
@@ -372,8 +340,9 @@ namespace WebApplication4.Controllers
             SqlCommand command = new SqlCommand(query, connection);
             command.CommandType = System.Data.CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@Nombre", Servicio);
+            command.Parameters.AddWithValue("@Nombre", Nombre);
             command.Parameters.AddWithValue("@Precio", Precio);
+            command.Parameters.AddWithValue("@Especialidad", Especialidad);
 
             ViewBag.mensaje = "";
 
@@ -394,11 +363,11 @@ namespace WebApplication4.Controllers
 
 
 
-
-            return View("/Views/Administrador/Servivios.cshtml");
+            ViewBag.Table = servicios.mostrartabla();
+            return View("/Views/Administrador/Servicios.cshtml");
         }
 
-        public ActionResult eliminarServicio(string Servicio)
+        public ActionResult eliminarServicio(int Id)
         {
 
 
@@ -409,7 +378,7 @@ namespace WebApplication4.Controllers
             command.CommandType = System.Data.CommandType.StoredProcedure;
 
             ;
-            command.Parameters.AddWithValue("@Nombre", Servicio);
+            command.Parameters.AddWithValue("@Id", Id);
 
             ViewBag.mensaje = "";
 
@@ -428,33 +397,35 @@ namespace WebApplication4.Controllers
             }
             connection.Close();
 
-
-            return View("/Views/Administrador/Servivios.cshtml");
+            ViewBag.Table = servicios.mostrartabla();
+            return View("/Views/Administrador/Servicios.cshtml");
         }
 
 
-        public ActionResult editarServicio(string Servicio, int Precio)
+        public ActionResult editarServicio(int Id, string Nombre, int Precio, string Especialidad)
         {
 
             var connection = new SqlConnection(conex);
             connection.Open();
             string query = "editarServicio";
-            string query2 = "select * from servicios where NOMBRE_SERVICIO ='" + Servicio + "'";
+            string query2 = "select * from servicios where ID_SERVICIO ='" + Id + "'";
 
             SqlCommand command = new SqlCommand(query, connection);
             SqlCommand command2 = new SqlCommand(query2, connection);
 
             command.CommandType = System.Data.CommandType.StoredProcedure;
 
-            command.Parameters.AddWithValue("@Nombre", Servicio);
+            command.Parameters.AddWithValue("@Id", Id);
+            command.Parameters.AddWithValue("@Nombre", Nombre);
             command.Parameters.AddWithValue("@Precio", Precio);
+            command.Parameters.AddWithValue("@Especialidad", Especialidad);
 
             ViewBag.mensaje = "";
 
             int row_count = command2.ExecuteNonQuery();
             if (row_count == 0)
             {
-                ViewBag.mensaje = " no existe el servicio " + Servicio + " en los registros.";
+                ViewBag.mensaje = " no existe el servicio " + Nombre + " en los registros.";
             }
             else
             {
@@ -466,8 +437,8 @@ namespace WebApplication4.Controllers
             connection.Close();
 
 
-
-            return View("/Views/Administrador/Servivios.cshtml");
+            ViewBag.Table = servicios.mostrartabla();
+            return View("/Views/Administrador/Servicios.cshtml");
         }
     }
 }

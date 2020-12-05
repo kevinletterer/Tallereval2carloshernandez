@@ -127,6 +127,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Conexion\Conexion.cs" />
+    <Compile Include="Models\Tablas\Citas.cs" />
+    <Compile Include="Models\Tablas\Horas.cs" />
+    <Compile Include="Models\Tablas\Pacientes.cs" />
+    <Compile Include="Models\Tablas\Servicios.cs" />
+    <Compile Include="Models\Tablas\Usuarios.cs" />
     <Compile Include="Models\Token\Token.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

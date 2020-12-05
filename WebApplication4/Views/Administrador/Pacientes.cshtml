@@ -25,7 +25,7 @@
         <a class="active topnav-a bumpy" href="/Administrador/Usuarios">Usuarios</a>
     </div>
 
-    
+    @Html.Raw(ViewBag.Table)
 
     <form method="post" action="/BDD/ingresarPaciente" style="width:20%; margin-left:100px; margin-top:100px;">
         <label for="text"><h1> Registro de Pacientes </h1></label>
@@ -53,7 +53,7 @@
                 <option value="Masculino">Masculino</option>
                 <option value="Femenino">Femenino</option>
             </select>
-     </div>
+        </div>
 
 
         <div class="form-group">
@@ -78,7 +78,7 @@
             </select>
         </div>
 
-     
+
 
         <button type="submit" name="Submit" class="btn btn-primary" value="Insertar">Ingresar</button>
 
@@ -89,7 +89,7 @@
         <label for="text"><h3> Eliminar Pacientes </h3></label>
         <div class="form-group">
             <label for="text">Ingrese Rut a eliminar</label>
-             <input autocomplete="off"  type="text" class="form-control" id="exampleInputEmail1" name="Rut">
+            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="Rut">
         </div>
 
         <button type="submit" name="Submit" class="btn btn-primary" value="Eliminar">Eliminar</button>
@@ -101,31 +101,31 @@
         <br><br>
         <div class="form-group">
             <label for="text">Rut  Paciente</label>
-             <input autocomplete="off"  type="text" class="form-control" id="exampleInputEmail1" name="Rut">
+            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="Rut">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Nombre  Paciente</label>
-             <input autocomplete="off"  type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Nombre">
+            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Nombre">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Telefono Paciente  </label>
-             <input autocomplete="off"  type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Telefono">
+            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Telefono">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Email Paciente</label>
-             <input autocomplete="off"  type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Email">
+            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Email">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Sexo Paciente</label>
-             <input autocomplete="off"  type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Sexo">
+            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Sexo">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Direccion Paciente</label>
-             <input autocomplete="off"  type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Direccion">
+            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Direccion">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Prevision Paciente</label>
-             <input autocomplete="off"  type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Prevision">
+            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Prevision">
         </div>
 
         <button type="submit" name="Submit" class="btn btn-primary" value="Insertar">Editar</button>

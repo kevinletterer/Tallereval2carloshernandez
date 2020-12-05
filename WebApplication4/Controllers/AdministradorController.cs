@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using System.Data.SqlClient;
 using WebApplication4.Models.Token;
 using WebApplication4.Models.Conexion;
+using WebApplication4.Models.Tablas;
+
+
 namespace WebApplication4.Controllers
 {
     public class AdministradorController : Controller
@@ -15,50 +18,10 @@ namespace WebApplication4.Controllers
         // GET: Administrador
         public ActionResult Usuarios()
         {
-
-            var connection = new SqlConnection(conex);
-            connection.Open();
-            string query = "Select * from USUARIOS";
-
-
-            SqlCommand command = new SqlCommand(query, connection);
-            SqlDataReader dataReader;
-            dataReader = command.ExecuteReader();
-            string Tabla = "";
-            Tabla += "<table border = 2 style = 'width= 60vw'>" +
-                        "<th>ID</th>" +
-                        "<th>USUARIO</th>" +
-                        "<th>CLAVE</th>" +
-                        "<th>RUT</th>" +
-                        "<th>TELEFONO</th>" +
-                        "<th>OFICINA</th>" +
-                        "<th>ESPECIALIDAD</th>" +
-                        "<th>NIVEL</th>" ;
-
-            while (dataReader.HasRows)
-            { 
-                while (dataReader.Read())
-                {
-                    Tabla += "<tr>";
-                    Tabla += "<td>" + dataReader.GetInt32(0) + "</td>";
-                    Tabla += "<td>" + dataReader.GetString(1) + "</td>";
-                    Tabla += "<td>" + dataReader.GetString(2) + "</td>";
-                    Tabla += "<td>" + dataReader.GetString(3) + "</td>";
-                    Tabla += "<td>" + dataReader.GetString(4) + "</td>";
-                    Tabla += "<td>" + dataReader.GetString(5) + "</td>";
-                    Tabla += "<td>" + dataReader.GetString(6) + "</td>";
-                    Tabla += "<td>" + dataReader.GetInt32(7)  + "</td>";
-                    Tabla += "</tr>";
-
-                }
-                
-                dataReader.NextResult();
-            }
-            Tabla += "</table>";
-
-            ViewBag.Table = Tabla;
-            connection.Close();
-
+            
+            Usuarios usuarios = new Usuarios();
+            ViewBag.Table = usuarios.mostrartabla();
+           
             return View("/Views/Administrador/Usuarios.cshtml");
         }
         public ActionResult Citas()
@@ -71,10 +34,16 @@ namespace WebApplication4.Controllers
         }
         public ActionResult Pacientes()
         {
+            Pacientes pacientes = new Pacientes();
+            ViewBag.Table = pacientes.mostrartabla();
             return View("/Views/Administrador/Pacientes.cshtml");
         }
         public ActionResult Servicios()
+
+
         {
+            Servicios servicios = new Servicios();
+            ViewBag.Table = servicios.mostrartabla();
             return View("/Views/Administrador/Servicios.cshtml");
         }
         
