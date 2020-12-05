@@ -27,7 +27,11 @@
         <a class="active topnav-a bumpy" href="/Administrador/Usuarios">Usuarios</a>
     </div>
 
+    @Html.Raw(ViewBag.Table)
     
+
+
+
     <form method="post" action="/BDD/ingresarUsuario" style="width:20%; margin-left:100px; margin-top:100px;">
         <label for="text"><h1> Registro de Usuarios </h1></label>
         <br><br>
@@ -37,7 +41,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Clave de Usuario</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" placeholder=""  name="Clave" required="" pattern="[A-Za-z0-9]+" autocomplete="off">
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Clave" required="" pattern="[A-Za-z0-9]+" autocomplete="off">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Rut de Usuario   </label>
@@ -45,13 +49,13 @@
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Telefono</label>
-            <input  type="tel" class="form-control" id="exampleInputEmail1" placeholder="Ej:912345678" maxlength="9"  pattern="[0-9]+" name="Telefono" required="" autocomplete="off">
+            <input type="tel" class="form-control" id="exampleInputEmail1" placeholder="Ej:912345678" maxlength="9" pattern="[0-9]+" name="Telefono" required="" autocomplete="off">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Oficina</label>
             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Oficina" required="" autocomplete="off">
         </div>
-        <div class="form-group">    
+        <div class="form-group">
             <label for="exampleInputPassword1">Especialidad</label>
             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Especialidad" required="" autocomplete="off">
         </div>
@@ -60,58 +64,58 @@
             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ej:1" required="" pattern="[+0-9]" name="Tipo" autocomplete="off">
         </div>
 
-        <button  type="submit" name="Submit" class="btn btn-primary" value="Insertar">Ingresar</button>
+        <button type="submit" name="Submit" class="btn btn-primary" value="Insertar">Ingresar</button>
 
 
     </form>
-        <br> <br>
-        <form method="post" action="/BDD/eliminarUsuario" style="width:20%; margin-left:100px; margin-top:100px;">
-            <label for="text"><h3> Eliminar Usuarios </h3></label>
-            <div class="form-group">
-                <label for="text">Ingrese Rut a eliminar</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="Rut" autocomplete="off">
-            </div>
+    <br> <br>
+    <form method="post" action="/BDD/eliminarUsuario" style="width:20%; margin-left:100px; margin-top:100px;">
+        <label for="text"><h3> Eliminar Usuarios </h3></label>
+        <div class="form-group">
+            <label for="text">Ingrese Rut a eliminar</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="Rut" autocomplete="off">
+        </div>
 
-            <button  type="submit" name="Submit" class="btn btn-primary" value="Eliminar">Eliminar</button>
+        <button type="submit" name="Submit" class="btn btn-primary" value="Eliminar">Eliminar</button>
 
-        </form>
+    </form>
 
-        <form method="post" action="/BDD/editarUsuario" style="width:20%; margin-left:100px; margin-top:100px;">
-            <label for="text"><h3> Editar Usuarios</h3> </label>
-            <br><br>
-            <div class="form-group">
-                <label for="text">Nombre de Usuario</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="Usuario" autocomplete="off">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Clave de Usuario</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Clave" autocomplete="off">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Rut de Usuario   </label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Rut" autocomplete="off">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Telefono</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Telefono" autocomplete="off">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Oficina</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Oficina" autocomplete="off">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Especialidad</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Especialidad" autocomplete="off">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Tipo de Usuario</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Tipo" autocomplete="off">
-            </div>
+    <form method="post" action="/BDD/editarUsuario" style="width:20%; margin-left:100px; margin-top:100px;">
+        <label for="text"><h3> Editar Usuarios</h3> </label>
+        <br><br>
+        <div class="form-group">
+            <label for="text">Nombre de Usuario</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" name="Usuario" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Clave de Usuario</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Clave" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Rut de Usuario   </label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Rut" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Telefono</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Telefono" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Oficina</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Oficina" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Especialidad</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Especialidad" autocomplete="off">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Tipo de Usuario</label>
+            <input type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Tipo" autocomplete="off">
+        </div>
 
-            <button  type="submit" name="Submit" class="btn btn-primary" value="Insertar">Editar</button>
+        <button type="submit" name="Submit" class="btn btn-primary" value="Insertar">Editar</button>
 
-        </form>
-    
+    </form>
+
 
 </body>
 

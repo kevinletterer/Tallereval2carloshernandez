@@ -9,7 +9,7 @@ namespace WebApplication4.Models.Token
     public class Token
 
     {
-        private static String conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=DBBCRONOS;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+        private static String conex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog = BDDCRONOS; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         private SqlConnection connection = new SqlConnection(conex);
         private SqlCommand command;
         private SqlDataReader dataReader;
@@ -62,6 +62,21 @@ namespace WebApplication4.Models.Token
             int usertype = 0;
             connection.Open();
             string query = "select TIPO from USUARIOS where USUARIO = '" + user + "' AND CLAVE = '" + pass + "'";
+            command = new SqlCommand(query, connection);
+            dataReader = command.ExecuteReader();
+            while (dataReader.Read())
+            {
+                usertype = dataReader.GetInt32(0);
+            }
+            connection.Close();
+
+            return usertype;
+        }
+        public int getUserType(string token)
+        {
+            int usertype = 0;
+            connection.Open();
+            string query = "select TIPO from USUARIOS where ID_USUARIO = (SELECT ID_USUARIO FROM TOKENS WHERE TOKEN ="+token+")";
             command = new SqlCommand(query, connection);
             dataReader = command.ExecuteReader();
             while (dataReader.Read())
