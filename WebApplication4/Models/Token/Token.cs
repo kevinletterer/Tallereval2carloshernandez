@@ -5,11 +5,13 @@ using System.Web;
 using System.Data.SqlClient;
 using WebApplication4.Models;
 
+
 namespace WebApplication4.Models.Token
 {
     public class Token
 
     {
+        
         private static string conex = Conexion.Conexion.conex;
         private SqlConnection connection = new SqlConnection(conex);
         private SqlCommand command;

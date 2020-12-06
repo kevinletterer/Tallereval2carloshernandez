@@ -616,5 +616,138 @@ namespace WebApplication4.Controllers
             ViewBag.Table = horas.mostrartabla();
             return View("/Views/Administrador/Horas.cshtml");
         }
+
+        public ActionResult ingresarCita(string Id_Paciente, string Id_Usuario, string Id_Servicio, string Id_Hora)
+        {
+            string token = Session["Token"].ToString();
+            if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                ViewBag.mensaje = "Tiempo de sesión expirado";
+                return PartialView("/Views/Home/Login.cshtml");
+            }
+
+            var connection = new SqlConnection(conex);
+            connection.Open();
+            string query = "guardarCita";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+            command.Parameters.AddWithValue("@Id_Paciente", Id_Paciente);
+            command.Parameters.AddWithValue("@Id_Usuario", Id_Usuario);
+            command.Parameters.AddWithValue("@Id_Servicio", Id_Servicio);
+            command.Parameters.AddWithValue("@Id_Hora", Id_Hora);
+
+            ViewBag.mensaje = "";
+
+
+            int row_count = command.ExecuteNonQuery();
+
+            if (row_count == 0)
+            {
+
+                ViewBag.mensaje = "Error al agregar";
+
+            }
+            else if (row_count > 0)
+            {
+                ViewBag.mensaje = "Cita agregada correctamente ";
+            }
+            connection.Close();
+
+            ViewBag.Table = citas.mostrartabla();
+
+            return View("/Views/Administrador/Citas.cshtml");
+        }
+
+        public ActionResult eliminarCita(string Id)
+        {
+            string token = Session["Token"].ToString();
+            if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                ViewBag.mensaje = "Tiempo de sesión expirado";
+                return PartialView("/Views/Home/Login.cshtml");
+            }
+
+            var connection = new SqlConnection(conex);
+            connection.Open();
+            string query = "eliminarCita";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+
+            
+            command.Parameters.AddWithValue("@Id", Id);
+
+            ViewBag.mensaje = "";
+
+
+            int row_count = command.ExecuteNonQuery();
+
+            if (row_count == 0)
+            {
+
+                ViewBag.mensaje = "Error al eliminar";
+
+            }
+            else if (row_count > 0)
+            {
+                ViewBag.mensaje = "Cita eliminada correctamente ";
+            }
+            connection.Close();
+
+            ViewBag.Table = citas.mostrartabla();
+            return View("/Views/Administrador/Citas.cshtml");
+        }
+
+        public ActionResult editarCita(string Id, string Id_Paciente, string Id_Usuario, string Id_Servicio, string Id_Hora)
+        {
+            string token = Session["Token"].ToString();
+            if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                ViewBag.mensaje = "Tiempo de sesión expirado";
+                return PartialView("/Views/Home/Login.cshtml");
+            }
+
+            var connection = new SqlConnection(conex);
+            connection.Open();
+            string query = "editarCita";
+            string query2 = "select * from citas where ID_CITA ='" + Id + "'";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlCommand command2 = new SqlCommand(query2, connection);
+
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+            command.Parameters.AddWithValue("@Id", Id);
+            command.Parameters.AddWithValue("@Id_Paciente", Id_Paciente);
+            command.Parameters.AddWithValue("@Id_Usuario", Id_Usuario);
+            command.Parameters.AddWithValue("@Id_Servicio", Id_Servicio);
+            command.Parameters.AddWithValue("@Id_Hora", Id_Hora);
+
+            ViewBag.mensaje = "";
+
+            int row_count = command2.ExecuteNonQuery();
+            if (row_count == 0)
+            {
+                ViewBag.mensaje = " no existe la cita ID " + Id + " en los registros.";
+            }
+            else
+            {
+                ViewBag.mensaje = "Cita ID " +Id+ " editado correctamente";
+                command.ExecuteNonQuery();
+            }
+
+
+
+            connection.Close();
+
+
+            ViewBag.Table = citas.mostrartabla();
+            return View("/Views/Administrador/Citas.cshtml");
+        }
     }
 }

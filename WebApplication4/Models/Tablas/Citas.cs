@@ -24,7 +24,7 @@ namespace WebApplication4.Models.Tablas
             string Tabla = "";
             Tabla += "<table border = 2 style = 'width= 60vw'>" +
                         "<th>ID CITA</th>" +
-                        "<th>ID CLIENTE</th>" +
+                        "<th>ID  Paciente</th>" +
                         "<th>ID USUARIO</th>" +
                         "<th>ID SERVICIO</th>" +
                         "<th>ID HORA</th>" ;
