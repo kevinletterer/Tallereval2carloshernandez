@@ -23,11 +23,6 @@ namespace WebApplication4.Controllers
         static Citas citas = new Citas();
 
 
-        
-
-
-
-
     public ActionResult Respuestas(string user, string pass)
         {
             ViewBag.mensaje = "";
