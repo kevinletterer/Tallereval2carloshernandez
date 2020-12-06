@@ -15,7 +15,7 @@ namespace WebApplication4.Models.Tablas
             string conex = Conexion.Conexion.conex;
             var connection = new SqlConnection(conex);
             connection.Open();
-            string query = "Select * from USUARIOS";
+            string query = "Select * from CITAS";
 
 
             SqlCommand command = new SqlCommand(query, connection);

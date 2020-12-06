@@ -15,7 +15,7 @@ namespace WebApplication4.Models.Tablas
             string conex = Conexion.Conexion.conex;
             var connection = new SqlConnection(conex);
             connection.Open();
-            string query = "Select * from USUARIOS";
+            string query = "Select * from HORAS";
 
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -36,8 +36,12 @@ namespace WebApplication4.Models.Tablas
 
                     Tabla += "<td>" + dataReader.GetInt32(0) + "</td>";
                     Tabla += "<td>" + dataReader.GetInt32(1) + "</td>";
-                    Tabla += "<td>" + dataReader.GetDateTime(2) + "</td>";
-                    Tabla += "<td>" + dataReader.GetInt32(3) + "</td>";
+                    Tabla += "<td>" + dataReader.GetDateTime(2).ToString() + "</td>";
+                    if (dataReader.GetByte(3)==1)
+                        Tabla += "<td>Si</td>";
+                    else
+                        Tabla += "<td>No</td>";
+
                     Tabla += "</tr>";
 
                 }

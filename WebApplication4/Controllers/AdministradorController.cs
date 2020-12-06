@@ -18,7 +18,14 @@ namespace WebApplication4.Controllers
         // GET: Administrador
         public ActionResult Usuarios()
         {
-            
+            string token = Session["Token"].ToString();
+            if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                ViewBag.mensaje = "Tiempo de sesión expirado";
+                return PartialView("/Views/Home/Login.cshtml");
+            }
+
             Usuarios usuarios = new Usuarios();
             ViewBag.Table = usuarios.mostrartabla();
            
@@ -26,14 +33,42 @@ namespace WebApplication4.Controllers
         }
         public ActionResult Citas()
         {
+            string token = Session["Token"].ToString();
+            if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                ViewBag.mensaje = "Tiempo de sesión expirado";
+                return PartialView("/Views/Home/Login.cshtml");
+            }
+
+            Citas citas = new Citas();
+            ViewBag.Table = citas.mostrartabla();
             return View("/Views/Administrador/Citas.cshtml");
         }
         public ActionResult Horas()
         {
+            string token = Session["Token"].ToString();
+            if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                ViewBag.mensaje = "Tiempo de sesión expirado";
+                return PartialView("/Views/Home/Login.cshtml");
+            }
+
+            Horas horas = new Horas();
+            ViewBag.Table = horas.mostrartabla();
             return View("/Views/Administrador/Horas.cshtml");
         }
         public ActionResult Pacientes()
         {
+            string token = Session["Token"].ToString();
+            if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                ViewBag.mensaje = "Tiempo de sesión expirado";
+                return PartialView("/Views/Home/Login.cshtml");
+            }
+
             Pacientes pacientes = new Pacientes();
             ViewBag.Table = pacientes.mostrartabla();
             return View("/Views/Administrador/Pacientes.cshtml");
@@ -42,6 +77,14 @@ namespace WebApplication4.Controllers
 
 
         {
+            string token = Session["Token"].ToString();
+            if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                ViewBag.mensaje = "Tiempo de sesión expirado";
+                return PartialView("/Views/Home/Login.cshtml");
+            }
+
             Servicios servicios = new Servicios();
             ViewBag.Table = servicios.mostrartabla();
             return View("/Views/Administrador/Servicios.cshtml");

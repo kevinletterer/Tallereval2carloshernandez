@@ -142,7 +142,7 @@ namespace WebApplication4.Models.Token
             DateTime tokentime = getTokenTime(token);
             DateTime check = DateTime.Now;
 
-            tokentime = tokentime.AddMinutes(1);
+            tokentime = tokentime.AddMinutes(5);
             int compare = DateTime.Compare(tokentime, check);
 
             return compare == 1 ? true : false;
