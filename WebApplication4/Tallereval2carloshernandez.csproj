@@ -123,12 +123,16 @@
     <Compile Include="Controllers\AdministradorController.cs" />
     <Compile Include="Controllers\BDDController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\Nivel2Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Conexion\Conexion.cs" />
+    <Compile Include="Models\Tablas\CitasNivel2.cs" />
     <Compile Include="Models\Tablas\Citas.cs" />
+    <Compile Include="Models\Tablas\HorasNivel2.cs" />
     <Compile Include="Models\Tablas\Horas.cs" />
+    <Compile Include="Models\Tablas\PacientesNivel2.cs" />
     <Compile Include="Models\Tablas\Pacientes.cs" />
     <Compile Include="Models\Tablas\Servicios.cs" />
     <Compile Include="Models\Tablas\Usuarios.cs" />
@@ -323,6 +327,7 @@
     <Content Include="Views\Home\Main3.cshtml" />
     <Content Include="Views\Home\Main6.cshtml" />
     <Content Include="Views\Home\Main4.cshtml" />
+    <Content Include="Views\Nivel2\Medico.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -44,7 +44,20 @@ namespace WebApplication4.Controllers
                 }
                 if (type == 2)
                 {
-                    return View("/Views/BDD/RespuestaPersonal.cshtml");
+                    Session["user"] = user;
+                    Session["pass"] = pass;
+                    int IdUsuario = Token.getUserId(user, pass);
+
+                    HorasNivel2 horas2 = new HorasNivel2();
+                    CitasNivel2 citas2 = new CitasNivel2();
+                    PacientesNivel2 pacientes2 = new PacientesNivel2();
+
+                    ViewBag.IdUsuario = IdUsuario.ToString();
+                    ViewBag.Table1 = horas2.mostrartabla(IdUsuario.ToString());
+                    ViewBag.Table2 = citas2.mostrartabla(IdUsuario.ToString());
+                    ViewBag.Table3 = pacientes2.mostrartabla(IdUsuario.ToString());
+
+                    return View("/Views/Nivel2/Medico.cshtml");
                 }
 
 
@@ -749,6 +762,179 @@ namespace WebApplication4.Controllers
 
             ViewBag.Table = citas.mostrartabla();
             return View("/Views/Administrador/Citas.cshtml");
+        }
+
+        public ActionResult ingresarHora2(string Id_Usuario, string Fecha, string Hora, string Disponible)
+        {
+            string token = Session["Token"].ToString();
+            if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                ViewBag.mensaje = "Tiempo de sesión expirado";
+                return PartialView("/Views/Home/Login.cshtml");
+            }
+
+
+
+            var connection = new SqlConnection(conex);
+            connection.Open();
+            string query = "guardarHora";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+
+            DateTime HoraCompuesta = DateTime.Parse(Fecha + " " + Hora);
+            Byte DisponibleByte = Byte.Parse((Disponible == "Si" ? 1 : 0).ToString());
+
+            command.Parameters.AddWithValue("@Id_Usuario", Id_Usuario);
+            command.Parameters.AddWithValue("@Hora", HoraCompuesta);
+            command.Parameters.AddWithValue("@Disponible", DisponibleByte);
+            ViewBag.mensaje = "";
+
+
+            int row_count = command.ExecuteNonQuery();
+
+            if (row_count == 0)
+            {
+
+                ViewBag.mensaje = "Error al agregar";
+
+            }
+            else if (row_count > 0)
+            {
+                ViewBag.mensaje = "Hora agregada correctamente ";
+            }
+            connection.Close();
+
+            string user = Session["user"].ToString();
+            string pass = Session["pass"].ToString();
+
+            int IdUsuario = Token.getUserId(user, pass);
+
+            HorasNivel2 horas2 = new HorasNivel2();
+            CitasNivel2 citas2 = new CitasNivel2();
+            PacientesNivel2 pacientes2 = new PacientesNivel2();
+
+            ViewBag.IdUsuario = IdUsuario.ToString();
+            ViewBag.Table1 = horas2.mostrartabla(IdUsuario.ToString());
+            ViewBag.Table2 = citas2.mostrartabla(IdUsuario.ToString());
+            ViewBag.Table3 = pacientes2.mostrartabla(IdUsuario.ToString());
+
+            return View("/Views/Nivel2/Medico.cshtml");
+        }
+
+        public ActionResult eliminarHora2(string Id_Usuario, string Id)
+        {
+            string token = Session["Token"].ToString();
+            if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                ViewBag.mensaje = "Tiempo de sesión expirado";
+                return PartialView("/Views/Home/Login.cshtml");
+            }
+
+            var connection = new SqlConnection(conex);
+            connection.Open();
+            string query = "eliminarHora2";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+
+            
+            command.Parameters.AddWithValue("@Id", Id);
+            command.Parameters.AddWithValue("@Id_Usuario", Id_Usuario);
+
+            ViewBag.mensaje = "";
+
+
+            int row_count = command.ExecuteNonQuery();
+
+            if (row_count == 0)
+            {
+
+                ViewBag.mensaje = "Error al eliminar";
+
+            }
+            else if (row_count > 0)
+            {
+                ViewBag.mensaje = "Hora eliminada correctamente ";
+            }
+            connection.Close();
+
+            string user = Session["user"].ToString();
+            string pass = Session["pass"].ToString();
+
+            int IdUsuario = Token.getUserId(user, pass);
+
+            HorasNivel2 horas2 = new HorasNivel2();
+            CitasNivel2 citas2 = new CitasNivel2();
+            PacientesNivel2 pacientes2 = new PacientesNivel2();
+
+            ViewBag.IdUsuario = IdUsuario.ToString();
+            ViewBag.Table1 = horas2.mostrartabla(IdUsuario.ToString());
+            ViewBag.Table2 = citas2.mostrartabla(IdUsuario.ToString());
+            ViewBag.Table3 = pacientes2.mostrartabla(IdUsuario.ToString());
+            return View("/Views/Nivel2/Medico.cshtml");
+        }
+
+        public ActionResult editarHora2(string Id, string Id_Usuario, string Fecha, string Hora, string Disponible)
+        {
+            string token = Session["Token"].ToString();
+            if (!Token.checkTokenValid(token))
+            {
+                Session["Token"] = "";
+                ViewBag.mensaje = "Tiempo de sesión expirado";
+                return PartialView("/Views/Home/Login.cshtml");
+            }
+
+            var connection = new SqlConnection(conex);
+            connection.Open();
+            string query = "editarHora2";
+            string query2 = "select * from horas where ID_HORA ='" + Id + "'";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            SqlCommand command2 = new SqlCommand(query2, connection);
+
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+
+            DateTime HoraCompuesta = DateTime.Parse(Fecha + " " + Hora);
+            Byte DisponibleByte = Byte.Parse((Disponible == "Si" ? 1 : 0).ToString());
+
+            command.Parameters.AddWithValue("@Id", Id);
+            command.Parameters.AddWithValue("@Id_Usuario", Id_Usuario);
+            command.Parameters.AddWithValue("@Hora", HoraCompuesta);
+            command.Parameters.AddWithValue("@Disponible", DisponibleByte);
+
+            ViewBag.mensaje = "";
+
+            int row_count = command2.ExecuteNonQuery();
+            if (row_count == 0)
+            {
+                ViewBag.mensaje = " No existe la hora ID " + Id + " en los registros.";
+            }
+            else
+            {
+                ViewBag.mensaje = "Hora editada correctamente";
+                command.ExecuteNonQuery();
+            }
+
+
+
+            connection.Close();
+
+
+            string user = Session["user"].ToString();
+            string pass = Session["pass"].ToString();
+
+            int IdUsuario = Token.getUserId(user, pass);
+
+            HorasNivel2 horas2 = new HorasNivel2();
+            CitasNivel2 citas2 = new CitasNivel2();
+            PacientesNivel2 pacientes2 = new PacientesNivel2();
+
+            ViewBag.IdUsuario = IdUsuario.ToString();
+            ViewBag.Table1 = horas2.mostrartabla(IdUsuario.ToString());
+            ViewBag.Table2 = citas2.mostrartabla(IdUsuario.ToString());
+            ViewBag.Table3 = pacientes2.mostrartabla(IdUsuario.ToString());
+            return View("/Views/Nivel2/Medico.cshtml");
         }
     }
 }

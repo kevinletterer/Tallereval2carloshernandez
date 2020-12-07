@@ -7,15 +7,15 @@ using WebApplication4.Models.Conexion;
 
 namespace WebApplication4.Models.Tablas
 {
-    public class Servicios
+    public class CitasNivel2
     {
-        public string mostrartabla()
+        public string mostrartabla(string Id)
         {
 
             string conex = Conexion.Conexion.conex;
             var connection = new SqlConnection(conex);
             connection.Open();
-            string query = "Select * from SERVICIOS";
+            string query = "Select * from CITAS WHERE ID_USUARIO = '"+Id+"'";
 
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -23,10 +23,11 @@ namespace WebApplication4.Models.Tablas
             dataReader = command.ExecuteReader();
             string Tabla = "";
             Tabla += "<table class = 'paleBlueRows' border = 2 style = 'width= 60vw'>" +
+                        "<th>ID CITA</th>" +
+                        "<th>ID  Paciente</th>" +
+                        "<th>ID USUARIO</th>" +
                         "<th>ID SERVICIO</th>" +
-                        "<th>NOMBRE SERVICIO</th>" +
-                        "<th>PRECIO</th>" +
-                        "<th>ESPECIALIDAD</th>";
+                        "<th>ID HORA</th>" ;
 
             while (dataReader.HasRows)
             {
@@ -35,9 +36,10 @@ namespace WebApplication4.Models.Tablas
                     Tabla += "<tr>";
 
                     Tabla += "<td>" + dataReader.GetInt32(0) + "</td>";
-                    Tabla += "<td>" + dataReader.GetString(1) + "</td>";
+                    Tabla += "<td>" + dataReader.GetInt32(1) + "</td>";
                     Tabla += "<td>" + dataReader.GetInt32(2) + "</td>";
-                    Tabla += "<td>" + dataReader.GetString(3) + "</td>";
+                    Tabla += "<td>" + dataReader.GetInt32(3) + "</td>";
+                    Tabla += "<td>" + dataReader.GetInt32(4) + "</td>";
                     Tabla += "</tr>";
 
                 }

@@ -1,0 +1,2 @@
+﻿
+Select DISTINCT Pacientes.* from Pacientes Inner Join CITAS ON PACIENTES.ID_PACIENTE=CITAS.ID_PACIENTE WHERE ID_USUARIO = 11;

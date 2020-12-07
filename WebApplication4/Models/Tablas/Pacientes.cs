@@ -22,7 +22,7 @@ namespace WebApplication4.Models.Tablas
             SqlDataReader dataReader;
             dataReader = command.ExecuteReader();
             string Tabla = "";
-            Tabla += "<table border = 2 style = 'width= 60vw'>" +
+            Tabla += "<table class = 'paleBlueRows' border = 2 style = 'width= 60vw'>" +
                         "<th>ID</th>" +
                         "<th>RUT</th>" +
                         "<th>NOMBRE</th>" +
