@@ -26,6 +26,7 @@
     </div>
 
     @Html.Raw(ViewBag.Table)
+    @ViewBag.mensaje
 
     <form method="post" action="/BDD/ingresarPaciente" style="width:20%; margin-left:100px; margin-top:100px;">
         <label for="text"><h1> Registro de Pacientes </h1></label>
@@ -88,8 +89,8 @@
     <form method="post" action="/BDD/eliminarPaciente" style="width:20%; margin-left:100px; margin-top:100px;">
         <label for="text"><h3> Eliminar Pacientes </h3></label>
         <div class="form-group">
-            <label for="text">Ingrese Rut a eliminar</label>
-            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="Rut">
+            <label for="text">Ingrese ID de paciente a eliminar</label>
+            <input type="text" required="" pattern="[0-9]+" class="form-control" id="exampleInputEmail1" name="Id" autocomplete="off">
         </div>
 
         <button type="submit" name="Submit" class="btn btn-primary" value="Eliminar">Eliminar</button>
@@ -100,32 +101,53 @@
         <label for="text"><h3> Editar Pacientes </h3></label>
         <br><br>
         <div class="form-group">
+            <label for="text">Ingrese ID de paciente a editar</label>
+            <input type="text" required="" pattern="[0-9]+" class="form-control" id="exampleInputEmail1" name="Id" autocomplete="off">
+        </div>
+        <div class="form-group">
             <label for="text">Rut  Paciente</label>
-            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="Rut">
+            <input required="" autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" name="Rut">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Nombre  Paciente</label>
-            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Nombre">
+            <input required="" autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Nombre">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Telefono Paciente  </label>
-            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Telefono">
+            <input required="" autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Telefono">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Email Paciente</label>
-            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Email">
+            <input required="" autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Email">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Sexo Paciente</label>
-            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Sexo">
+            <select autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" required="" placeholder="" name="Sexo">
+                <option value="" selected></option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Direccion Paciente</label>
-            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Direccion">
+            <input required="" autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Direccion">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Prevision Paciente</label>
-            <input autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" placeholder="" name="Prevision">
+            <select autocomplete="off" type="text" class="form-control" id="exampleInputEmail1" required="" placeholder="" name="Prevision">
+                <option value="" selected></option>
+                <option value="Fonasa">Fondo Nacional De Salud (Fonasa)</option>
+                <option value="Isalud">Isalud Isapre De Codelco</option>
+                <option value="Banmédica">Isapre Banmédica</option>
+                <option value="Colmena">Isapre Colmena</option>
+                <option value="Consalud">Isapre Consalud</option>
+                <option value="Cruz">Isapre Cruz Del Norte</option>
+                <option value="Fundación_Banco">Isapre Fundación Banco Estado</option>
+                <option value="Másvida">Isapre Nueva Másvida</option>
+                <option value="VidaTres">Isapre Vida Tres</option>
+                <option value="Particular">Particular</option>
+
+            </select>
         </div>
 
         <button type="submit" name="Submit" class="btn btn-primary" value="Insertar">Editar</button>

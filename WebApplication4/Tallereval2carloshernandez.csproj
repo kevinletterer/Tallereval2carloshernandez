@@ -318,6 +318,11 @@
     <Content Include="Views\Especialidades\Examenes.cshtml" />
     <Content Include="Views\Especialidades\Imagenologia.cshtml" />
     <Content Include="Views\Especialidades\Dental.cshtml" />
+    <Content Include="Views\Home\Main2.cshtml" />
+    <Content Include="Views\Home\Main5.cshtml" />
+    <Content Include="Views\Home\Main3.cshtml" />
+    <Content Include="Views\Home\Main6.cshtml" />
+    <Content Include="Views\Home\Main4.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

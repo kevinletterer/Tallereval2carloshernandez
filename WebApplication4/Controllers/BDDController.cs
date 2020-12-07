@@ -101,12 +101,12 @@ namespace WebApplication4.Controllers
             if (row_count == 0)
             {
 
-                ViewBag.mensaje = "error al agregar";
+                ViewBag.mensaje = "Error al agregar";
 
             }
             else if (row_count > 0)
             {
-                ViewBag.mensaje = "usuario agregado correctamente ";
+                ViewBag.mensaje = "Usuario agregado correctamente ";
             }
             connection.Close();
 
@@ -115,7 +115,7 @@ namespace WebApplication4.Controllers
             return View("/Views/Administrador/Usuarios.cshtml");
         }
 
-        public ActionResult eliminarUsuario(string Rut)
+        public ActionResult eliminarUsuario(string Id)
         {
             string token = Session["Token"].ToString();
                 if (!Token.checkTokenValid(token))
@@ -131,7 +131,7 @@ namespace WebApplication4.Controllers
             command.CommandType = System.Data.CommandType.StoredProcedure;
 
             ;
-            command.Parameters.AddWithValue("@Rut", Rut);
+            command.Parameters.AddWithValue("@Id", Id);
 
             ViewBag.mensaje = "";
 
@@ -141,12 +141,12 @@ namespace WebApplication4.Controllers
             if (row_count == 0)
             {
 
-                ViewBag.mensaje = "error al eliminar";
+                ViewBag.mensaje = "Error al eliminar";
 
             }
             else if (row_count > 0)
             {
-                ViewBag.mensaje = "usuario eliminado correctamente ";
+                ViewBag.mensaje = "Usuario eliminado correctamente ";
             }
             connection.Close();
 
@@ -155,7 +155,7 @@ namespace WebApplication4.Controllers
             return View("/Views/Administrador/Usuarios.cshtml");
         }
 
-        public ActionResult editarUsuario(string Nombre, string Usuario, string Clave, string Rut, string Telefono, string Oficina, string Especialidad, int Tipo)
+        public ActionResult editarUsuario(string Id, string Nombre, string Usuario, string Clave, string Rut, string Telefono, string Oficina, string Especialidad, int Tipo)
         {
             string token = Session["Token"].ToString();
             if (!Token.checkTokenValid(token))
@@ -167,12 +167,13 @@ namespace WebApplication4.Controllers
             var connection = new SqlConnection(conex);
             connection.Open();
             string query = "editarUsuario";
-            string query2 = "select * from usuarios where usuario ='" + Usuario + "'";
+            string query2 = "select * from usuarios where ID_USUARIO ='" + Id + "'";
 
             SqlCommand command = new SqlCommand(query, connection);
             SqlCommand command2 = new SqlCommand(query2, connection);
 
             command.CommandType = System.Data.CommandType.StoredProcedure;
+            command.Parameters.AddWithValue("@Id", Id);
             command.Parameters.AddWithValue("@Nombre", Nombre);
             command.Parameters.AddWithValue("@Usuario", Usuario);
             command.Parameters.AddWithValue("@Clave", Clave);
@@ -190,10 +191,11 @@ namespace WebApplication4.Controllers
                 int row_count = command2.ExecuteNonQuery();
                 if (row_count == 0)
                 {
-                    ViewBag.mensaje = " no existe el usuario " + Usuario + " en los registros.";
+                    ViewBag.mensaje = " No existe el usuario con ID " + Id + " en los registros.";
                 }
                 else
                 {
+                    ViewBag.mensaje = "Usuario editado correctamente";
                     command.ExecuteNonQuery();
                 }
 
@@ -242,12 +244,12 @@ namespace WebApplication4.Controllers
             if (row_count == 0)
             {
 
-                ViewBag.mensaje = "error al agregar";
+                ViewBag.mensaje = "Error al agregar";
 
             }
             else if (row_count > 0)
             {
-                ViewBag.mensaje = "paciente agregado correctamente ";
+                ViewBag.mensaje = "Paciente agregado correctamente ";
             }
             connection.Close();
 
@@ -258,7 +260,7 @@ namespace WebApplication4.Controllers
         }
 
 
-        public ActionResult eliminarPaciente(string Rut)
+        public ActionResult eliminarPaciente(string Id)
         {
             string token = Session["Token"].ToString();
             if (!Token.checkTokenValid(token))
@@ -275,7 +277,7 @@ namespace WebApplication4.Controllers
             command.CommandType = System.Data.CommandType.StoredProcedure;
 
             ;
-            command.Parameters.AddWithValue("@Rut", Rut);
+            command.Parameters.AddWithValue("@Id", Id);
 
             ViewBag.mensaje = "";
 
@@ -285,12 +287,12 @@ namespace WebApplication4.Controllers
             if (row_count == 0)
             {
 
-                ViewBag.mensaje = "error al eliminar";
+                ViewBag.mensaje = "Error al eliminar";
 
             }
             else if (row_count > 0)
             {
-                ViewBag.mensaje = "usuario eliminado correctamente ";
+                ViewBag.mensaje = "Paciente eliminado correctamente ";
             }
             connection.Close();
 
@@ -299,7 +301,7 @@ namespace WebApplication4.Controllers
         }
 
 
-        public ActionResult editarPaciente(string Rut, string Nombre, string Telefono, string Email, string Sexo, string Direccion, string Prevision)
+        public ActionResult editarPaciente(string Id, string Rut, string Nombre, string Telefono, string Email, string Sexo, string Direccion, string Prevision)
         {
             string token = Session["Token"].ToString();
             if (!Token.checkTokenValid(token))
@@ -312,13 +314,14 @@ namespace WebApplication4.Controllers
             var connection = new SqlConnection(conex);
             connection.Open();
             string query = "editarPaciente";
-            string query2 = "select * from usuarios where usuario ='" + Rut + "'";
+            string query2 = "select * from pacientes where ID_PACIENTE ='" + Id + "'";
 
             SqlCommand command = new SqlCommand(query, connection);
             SqlCommand command2 = new SqlCommand(query2, connection);
 
             command.CommandType = System.Data.CommandType.StoredProcedure;
 
+            command.Parameters.AddWithValue("@Id", Id);
             command.Parameters.AddWithValue("@Rut", Rut);
             command.Parameters.AddWithValue("@Nombre", Nombre);
             command.Parameters.AddWithValue("@Telefono", Telefono);
@@ -331,10 +334,11 @@ namespace WebApplication4.Controllers
             int row_count = command2.ExecuteNonQuery();
             if (row_count == 0)
             {
-                ViewBag.mensaje = " no existe el paciente " + Rut + " en los registros.";
+                ViewBag.mensaje = " No existe el paciente con ID " + Id + " en los registros.";
             }
             else
             {
+                ViewBag.mensaje = "Paciente editado correctamente";
                 command.ExecuteNonQuery();
             }
 
@@ -375,12 +379,12 @@ namespace WebApplication4.Controllers
             if (row_count == 0)
             {
 
-                ViewBag.mensaje = "error al agregar";
+                ViewBag.mensaje = "Error al agregar";
 
             }
             else if (row_count > 0)
             {
-                ViewBag.mensaje = "servicio agregado correctamente ";
+                ViewBag.mensaje = "Servicio agregado correctamente ";
             }
             connection.Close();
 
@@ -417,12 +421,12 @@ namespace WebApplication4.Controllers
             if (row_count == 0)
             {
 
-                ViewBag.mensaje = "error al eliminar";
+                ViewBag.mensaje = "Error al eliminar";
 
             }
             else if (row_count > 0)
             {
-                ViewBag.mensaje = "usuario eliminado correctamente ";
+                ViewBag.mensaje = "Servicio eliminado correctamente ";
             }
             connection.Close();
 
@@ -461,10 +465,11 @@ namespace WebApplication4.Controllers
             int row_count = command2.ExecuteNonQuery();
             if (row_count == 0)
             {
-                ViewBag.mensaje = " no existe el servicio " + Nombre + " en los registros.";
+                ViewBag.mensaje = "No existe el servicio con ID " + Id + " en los registros.";
             }
             else
             {
+                ViewBag.mensaje = "Servicio editado correctamente";
                 command.ExecuteNonQuery();
             }
 
@@ -509,12 +514,12 @@ namespace WebApplication4.Controllers
             if (row_count == 0)
             {
 
-                ViewBag.mensaje = "error al agregar";
+                ViewBag.mensaje = "Error al agregar";
 
             }
             else if (row_count > 0)
             {
-                ViewBag.mensaje = "usuario agregado correctamente ";
+                ViewBag.mensaje = "Hora agregada correctamente ";
             }
             connection.Close();
 
@@ -550,12 +555,12 @@ namespace WebApplication4.Controllers
             if (row_count == 0)
             {
 
-                ViewBag.mensaje = "error al eliminar";
+                ViewBag.mensaje = "Error al eliminar";
 
             }
             else if (row_count > 0)
             {
-                ViewBag.mensaje = "usuario eliminado correctamente ";
+                ViewBag.mensaje = "Hora eliminada correctamente ";
             }
             connection.Close();
 
@@ -596,10 +601,11 @@ namespace WebApplication4.Controllers
             int row_count = command2.ExecuteNonQuery();
             if (row_count == 0)
             {
-                ViewBag.mensaje = " no existe la hora ID " + Id + " en los registros.";
+                ViewBag.mensaje = " No existe la hora ID " + Id + " en los registros.";
             }
             else
             {
+                ViewBag.mensaje = "Hora editada correctamente";
                 command.ExecuteNonQuery();
             }
 
@@ -728,7 +734,7 @@ namespace WebApplication4.Controllers
             int row_count = command2.ExecuteNonQuery();
             if (row_count == 0)
             {
-                ViewBag.mensaje = " no existe la cita ID " + Id + " en los registros.";
+                ViewBag.mensaje = " No existe la cita ID " + Id + " en los registros.";
             }
             else
             {
